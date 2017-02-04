@@ -95,6 +95,11 @@ public class DriveTrain extends Subsystem {
     	encLD.reset();
     }
     
+    public void drive(){
+    	Robot.driveTrain.arcadeDrive(.3, .3);
+    	
+    }
+    
     public void runEncs(int encoderValue){
     	Robot.driveTrain.drive();
     	//int encLDValue = encLD.get();
@@ -103,13 +108,9 @@ public class DriveTrain extends Subsystem {
     	
     	}
     	
-    
     	
     }
     	
-    public void drive(){
-    	Robot.driveTrain.arcadeDrive(.3, .3);
-    	
-    }
+
 }
 

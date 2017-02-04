@@ -95,8 +95,9 @@ public class OI {
         j2b1.whileHeld(new Reload());
         j2b1.whenReleased(new Fire());
         
-        j2b1 = new JoystickButton (joystick2, 1);
-        j2b1.whenPressed(new Reload());
+        j2b2 = new JoystickButton (joystick2, 2);
+        j2b2.whenPressed(new runEncs());
+
         
         j2b3 = new JoystickButton (joystick2, 3);
         j2b3.whileHeld(new ballIn());
