@@ -13,6 +13,8 @@ package org.usfirst.frc2906.SpanawayLakeSentinels.commands;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc2906.SpanawayLakeSentinels.Robot;
 import org.usfirst.frc2906.SpanawayLakeSentinels.RobotMap;
 
@@ -42,13 +44,17 @@ public class AutoEncoderTest extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
+    	Robot.driveTrain.resetEncs();
     	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-
+    	
+    	Robot.driveTrain.runEncs(10);
+    	Robot.driveTrain.resetEncs();
+    	Robot.driveTrain.runEncs2();
+    	SmartDashboard.putBoolean("Magic test boolean", Robot.driveTrain.dankMemes);
     }
 
     // Make this return true when this Command no longer needs to run execute()

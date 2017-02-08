@@ -52,15 +52,15 @@ public class RobotMap {
     public static Solenoid testPiston2;
     public static Encoder encoder;
     public static Encoder testEncoder;
-    public static Encoder encoderRight;
-    public static Encoder encoderLeft;
+    //public static Encoder encoderRight;
+    //public static Encoder encoderLeft;
     public static SpeedController wheelsRight;
     public static SpeedController wheelsLeft;
     public static SpeedController testBenchMotor;
     public static final double sensitivity = 0.1;
     public static final double upArm = 0.05;
     public static final double downArm = .30;
-    public static final double idleArm = 0.1;
+    public static final double idleArm = 0.05;
     public static final double stopArm = 0;
     public static final double leftoutBall = 1.0;
     public static final double rightoutBall = -1.0;
@@ -138,17 +138,7 @@ public class RobotMap {
          encoder.reset();
          LiveWindow.addSensor("testBenchMotor", "Encoder", encoder);
          
-         encoderRight = new Encoder(2, 3, true, Encoder.EncodingType.k4X);
-         encoderRight.setPIDSourceType(PIDSourceType.kDisplacement);
-         encoderRight.setDistancePerPulse(distanceperPulse);
-         encoderRight.setSamplesToAverage(samplestoAverage);
-         encoderRight.reset();
-         
-         encoderLeft = new Encoder(4, 5, false, Encoder.EncodingType.k4X);
-         encoderLeft.setPIDSourceType(PIDSourceType.kDisplacement);
-         encoderLeft.setDistancePerPulse(distanceperPulse);
-         encoderLeft.setSamplesToAverage(samplestoAverage);
-         encoderLeft.reset();
+
          
          
          testEncoder = new Encoder(6, 7, true, Encoder.EncodingType.k2X);
@@ -196,12 +186,6 @@ public class RobotMap {
     	return encoder;
     }
     
-    public Encoder getEncoderRight(){
-    	return encoderRight;
-    }
-    
-    public Encoder geetEncoderLeft(){
-    	return encoderLeft;
-    }
+
     
 }
