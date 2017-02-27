@@ -106,9 +106,13 @@ public class DriveTrain extends Subsystem {
     	Robot.encoderLeft.reset();
     }
     
-    public void drive(){
-    	Robot.driveTrain.arcadeDrive(.3, .3);
+    public void drive(double speed){
+    	Robot.driveTrain.arcadeDrive(speed, speed);
     	
+    }
+    
+    public void driveStop() {
+    	Robot.driveTrain.arcadeDrive(0.0, 0.0);
     }
     public boolean dankMemes = false;
     public void runEncs(int encoderValue){
