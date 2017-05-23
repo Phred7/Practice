@@ -50,7 +50,7 @@ public class RobotMap {
     public static DoubleSolenoid ballFire;
     public static Solenoid testPiston1;
     public static Solenoid testPiston2;
-    public static Encoder encoder;
+    public static Encoder armEncoder;
     public static Encoder testEncoder;
     //public static Encoder encoderRight;
     //public static Encoder encoderLeft;
@@ -132,11 +132,11 @@ public class RobotMap {
         
         /*If encoder ports are the same you WILL GET A RED COMM LIGHT ON THE ROBORIO!!!*/
         
-         encoder = new Encoder(0, 1, true, Encoder.EncodingType.k4X);
-         encoder.setPIDSourceType(PIDSourceType.kDisplacement);
-         encoder.setDistancePerPulse(distanceperPulse);
-         encoder.reset();
-         LiveWindow.addSensor("testBenchMotor", "Encoder", encoder);
+         armEncoder = new Encoder(0, 1, true, Encoder.EncodingType.k4X);
+         armEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
+         armEncoder.setDistancePerPulse(distanceperPulse);
+         armEncoder.reset();
+         LiveWindow.addSensor("testBenchMotor", "Encoder", armEncoder);
          
 
          
@@ -183,7 +183,7 @@ public class RobotMap {
     }
     
     public Encoder getEncoder(){
-    	return encoder;
+    	return armEncoder;
     }
     
 

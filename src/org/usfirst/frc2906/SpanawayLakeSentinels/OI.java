@@ -121,9 +121,7 @@ public class OI {
         j1b4 = new JoystickButton (joystick1, 4);
         j1b4.whenPressed(new armIdle());
         
-        j1b9 = new JoystickButton (joystick1, 9);
-        j1b9.whileHeld(new testOn());
-        j1b9.whenReleased(new testOff());
+
         
        /* j1b5 = new JoystickButton (joystick1, 5);
         j1b5.whileHeld(new armUp());
@@ -133,17 +131,7 @@ public class OI {
         j1b6.whenReleased(new armIdle());
         j1b6.whileHeld(new armDown());*/
         
-        j2b7 = new JoystickButton (joystick2, 7);
-        j2b7.whenPressed(new driveRelayForward());
-        
-        j2b8 = new JoystickButton (joystick2, 8);
-        j2b8.whenPressed(new driveRelayReverse());
-        
-        j2b9 = new JoystickButton (joystick2, 9);
-        j2b9.whenPressed(new spikeOff());
-        
-        j2b10 = new JoystickButton (joystick2,10);
-        j2b10.whenPressed(new testEncoderRun());
+
         
         
         j2b12 = new JoystickButton (joystick2, 12);
