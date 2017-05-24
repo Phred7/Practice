@@ -23,18 +23,16 @@ public class PIDArm extends PIDSubsystem {
 	Encoder armEncoder = RobotMap.armEncoder;
 
 	// Initialize your subsystem here
-	public PIDArm(int motorPort, int potPort, String name) {
+	public PIDArm(int motorPort, int encPort, String name) {
 		super(name, 10.0, 0.0, 40.0);
 		this.name = name;
-		motor = new Talon(motorPort);
-		pot = new Encoder(potPort, 1.0, 0.0);
+		//rotation = new Talon(motorPort);
+		//armEncoder = new Encoder(encPort, 1.0, 0.0);
 		setAbsoluteTolerance(0.2);
 		getPIDController().setContinuous(false);
 		getPIDController().setSetpoint(0);
 		getPIDController().enable();
 
-		LiveWindow.addActuator(this.name, "motor", motor);
-		LiveWindow.addSensor(this.name, "pot", pot);
 		LiveWindow.addActuator(this.name, "PIDSubsystem Controller", getPIDController());
 
 	}
@@ -50,12 +48,12 @@ public class PIDArm extends PIDSubsystem {
 	}
 
 	protected double returnPIDInput() {
-		return pot.get();
+		return armEncoder.get();
 	}
 
 	protected void usePIDOutput(double output) {
 		if (!Double.isNaN(output)) {
-			motor.pidWrite(output);
+			rotation.pidWrite(output);
 		}
 	}
 }
