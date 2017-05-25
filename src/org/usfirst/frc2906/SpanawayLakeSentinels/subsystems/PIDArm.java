@@ -24,7 +24,7 @@ public class PIDArm extends PIDSubsystem {
 
 	// Initialize your subsystem here
 	public PIDArm(int motorPort, int encPort, String name) {
-		super(name, 10.0, 0.0, 40.0);
+		super(name, 10.0, 0.0, 10.0);
 		this.name = name;
 		//rotation = new Talon(motorPort);
 		//armEncoder = new Encoder(encPort, 1.0, 0.0);
@@ -34,7 +34,7 @@ public class PIDArm extends PIDSubsystem {
 		getPIDController().enable();
 
 		LiveWindow.addActuator(this.name, "PIDSubsystem Controller", getPIDController());
-
+		LiveWindow.addSensor(this.name, "ArmEncoder", armEncoder);
 	}
 
 	public void initDefaultCommand() {

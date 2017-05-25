@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 public class LowerArm extends CommandGroup {
 
     public LowerArm() {
-       addSequential(new SetArmSetpoint(.2));
+       addSequential(new SetArmSetpoint(10));
        addSequential(new WaitCommand(.5));
        addSequential(new SetArmSetpoint(0));
        

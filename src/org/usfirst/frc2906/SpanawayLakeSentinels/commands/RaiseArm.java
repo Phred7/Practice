@@ -8,6 +8,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class RaiseArm extends CommandGroup {
 
     public RaiseArm() {
-        addSequential(new SetArmSetpoint(25));
+        addSequential(new SetArmSetpoint(-25));
     }
 }
