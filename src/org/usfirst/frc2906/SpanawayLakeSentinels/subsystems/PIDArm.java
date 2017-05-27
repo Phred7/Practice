@@ -23,7 +23,7 @@ public class PIDArm extends PIDSubsystem {
 	Encoder armEncoder = RobotMap.armEncoder;
 
 	// Initialize your subsystem here
-	public PIDArm(int motorPort, int encPort, String name) {
+	public PIDArm(String name) {
 		super(name, 10.0, 0.0, 10.0);
 		this.name = name;
 		//rotation = new Talon(motorPort);
