@@ -8,6 +8,7 @@ import org.usfirst.frc2906.SpanawayLakeSentinels.Robot;
 import org.usfirst.frc2906.SpanawayLakeSentinels.RobotMap;
 
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 
@@ -18,23 +19,28 @@ public class PIDArm extends PIDSubsystem {
 
 	// Initialize your subsystem here
 
+	private final SpeedController motor;
+	private final Encoder enc;
 	private String name;
+	
 	SpeedController rotation  = RobotMap.rotation;
 	Encoder armEncoder = RobotMap.armEncoder;
 
-	// Initialize your subsystem here
+
 	public PIDArm(String name) {
 		super(name, 10.0, 0.0, 10.0);
 		this.name = name;
-		//rotation = new Talon(motorPort);
-		//armEncoder = new Encoder(encPort, 1.0, 0.0);
+		motor = rotation;
+		enc = armEncoder;
 		setAbsoluteTolerance(0.2);
 		getPIDController().setContinuous(false);
 		getPIDController().setSetpoint(0);
 		getPIDController().enable();
 
+		//LiveWindow.addActuator(this.name, "motor", motor);
+		LiveWindow.addSensor(this.name, "enc", enc);
 		LiveWindow.addActuator(this.name, "PIDSubsystem Controller", getPIDController());
-		LiveWindow.addSensor(this.name, "ArmEncoder", armEncoder);
+
 	}
 
 	public void initDefaultCommand() {
@@ -43,18 +49,17 @@ public class PIDArm extends PIDSubsystem {
 	@Override
 	public boolean onTarget() {
 		double e = Math.abs(getPIDController().getError());
-		System.out.println(name + ", " + e);
+		System.out.println(name+", "+e);
 		return e < .15;
 	}
-
+	
 	protected double returnPIDInput() {
-		return armEncoder.get();
+		return enc.get();
 	}
 
 	protected void usePIDOutput(double output) {
 		if (!Double.isNaN(output)) {
-			rotation.pidWrite(output);
+			motor.pidWrite(output);
 		}
 	}
 }
-
