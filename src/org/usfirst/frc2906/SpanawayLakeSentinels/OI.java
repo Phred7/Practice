@@ -103,8 +103,8 @@ public class OI {
         j2b11.whileHeld(new DriveArm());
         j2b11.whenReleased(new armStop());
         
-        j1b1.whenPressed(new RaiseArm());
-        j1b1.whenReleased(new LowerArm());
+      /*  j1b1.whenPressed(new RaiseArm());
+        j1b1.whenReleased(new LowerArm());*/
 
     
     }
